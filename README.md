@@ -55,7 +55,7 @@ A Rust smart contract running on the Internet Computer for managing item auction
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/username/SmartContracts.git
+git clone https://github.com/Keenaanash0/SmartContracts.git
 ```
 
 2. Navigate to the contract folder:
