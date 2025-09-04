@@ -64,12 +64,6 @@ git clone https://github.com/Keenaanash0/SmartContracts.git
 cd SmartContracts/Solidity/counter-contract
 ```
 
-or
-
-```bash
-cd SmartContracts/Solidity/proposal-contract
-```
-
 3. Open the contract in [Remix IDE](https://remix.ethereum.org/), then compile and deploy.
 
 ### Rust / Internet Computer
@@ -77,7 +71,7 @@ cd SmartContracts/Solidity/proposal-contract
 1. Navigate to the Rust contract folder:
 
 ```bash
-cd SmartContracts/Rust/auction-contract
+cd SmartContracts/Rust
 ```
 
 2. Build and deploy using [DFINITY SDK](https://internetcomputer.org/docs/current/developer-docs/quickstart/):
