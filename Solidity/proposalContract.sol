@@ -3,8 +3,8 @@ pragma solidity ^0.8.0;
 
 contract ProposalContract {
     struct Proposal {
-        string title;        
-        string description;  
+        string title;
+        string description;
     }
 
     Proposal[] public proposals;
