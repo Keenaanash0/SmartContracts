@@ -29,15 +29,17 @@ contract ProposalContract {
         }
     }
 
-    // ✅ Custom logic for proposal state
+    function getProposal(uint256 index) public view returns (string memory, string memory, uint256, uint256) {
+        require(index < proposals.length, "Proposal does not exist");
+        Proposal storage proposal = proposals[index];
+        return (proposal.title, proposal.description, proposal.yesVotes, proposal.noVotes);
+    }
+
+    // Custom logic for proposal state
     function getProposalState(uint256 index) public view returns (string memory) {
         require(index < proposals.length, "Proposal does not exist");
         Proposal storage proposal = proposals[index];
 
-        // My custom logic:
-        // - Proposal "Succeeded" if yesVotes >= (noVotes + 2)
-        // - Proposal "Failed" if noVotes > yesVotes
-        // - Otherwise "Pending"
         if (proposal.yesVotes >= proposal.noVotes + 2) {
             return "Succeeded";
         } else if (proposal.noVotes > proposal.yesVotes) {
