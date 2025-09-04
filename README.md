@@ -17,6 +17,15 @@ Features include:
 
 ---
 
+### 2. Proposal Contract
+A contract that manages proposals with both a title and a description.  
+Features include:
+- Define a `Proposal` struct with `title` and `description`
+- Create a proposal with the `createProposal` function
+- Retrieve a proposal’s details (title and description) with `getProposal`
+
+---
+
 ## 🛠 How to Use
 1. Clone this repository:
    ```bash
@@ -25,6 +34,10 @@ Features include:
 2. Navigate to the contract you want to try, for example:
    ```bash
    cd SmartContracts/Solidity/counter-contract
+   ```
+   or
+   ```bash
+   cd SmartContracts/Solidity/proposal-contract
    ```
 3. Open the contract in [Remix IDE](https://remix.ethereum.org/), then compile and deploy it.  
 
