@@ -5,6 +5,8 @@ contract ProposalContract {
     struct Proposal {
         string title;
         string description;
+        uint256 yesVotes;
+        uint256 noVotes;
     }
 
     Proposal[] public proposals;
@@ -12,13 +14,36 @@ contract ProposalContract {
     function createProposal(string memory _title, string memory _description) public {
         proposals.push(Proposal({
             title: _title,
-            description: _description
+            description: _description,
+            yesVotes: 0,
+            noVotes: 0
         }));
     }
 
-    function getProposal(uint256 index) public view returns (string memory, string memory) {
+    function vote(uint256 index, bool support) public {
+        require(index < proposals.length, "Proposal does not exist");
+        if (support) {
+            proposals[index].yesVotes += 1;
+        } else {
+            proposals[index].noVotes += 1;
+        }
+    }
+
+    // ✅ Custom logic for proposal state
+    function getProposalState(uint256 index) public view returns (string memory) {
         require(index < proposals.length, "Proposal does not exist");
         Proposal storage proposal = proposals[index];
-        return (proposal.title, proposal.description);
+
+        // My custom logic:
+        // - Proposal "Succeeded" if yesVotes >= (noVotes + 2)
+        // - Proposal "Failed" if noVotes > yesVotes
+        // - Otherwise "Pending"
+        if (proposal.yesVotes >= proposal.noVotes + 2) {
+            return "Succeeded";
+        } else if (proposal.noVotes > proposal.yesVotes) {
+            return "Failed";
+        } else {
+            return "Pending";
+        }
     }
 }
